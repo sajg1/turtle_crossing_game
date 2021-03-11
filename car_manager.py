@@ -3,7 +3,7 @@ import random
 import time
 
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
-STARTING_Y_COORD = [i for i in range(-220, 250, 20)]
+STARTING_Y_COORD = [i for i in range(-220, 250, 40)]
 STARTING_X_COORD = [i for i in range(300, 3000, 10)]
 STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 2
@@ -45,8 +45,10 @@ class CarManager():
 
     def collision(self, player):
         for car in self.garage:
-            if car.distance(player) < 20:
-                return True
+            y_cor = car.ycor()
+            if y_cor-10 > player.ycor():
+                if car.distance(player) < 25:
+                    return True
         return False
 
     def stop_traffic(self):
