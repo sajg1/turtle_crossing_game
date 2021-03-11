@@ -40,9 +40,17 @@ class CarManager():
             car.hideturtle()
         self.garage = []
 
-    def car_accelerate(self):
+    def accelerate(self):
         self.move_speed += MOVE_INCREMENT
 
+    def collision(self, player):
+        for car in self.garage:
+            if car.distance(player) < 20:
+                return True
+        return False
+
+    def stop_traffic(self):
+        self.move_speed = 0
 
 
 

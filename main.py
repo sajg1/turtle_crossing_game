@@ -32,5 +32,12 @@ while game_is_on:
             player.reset_position()
             scoreboard.levelup()
             car_manager.red_light()
-            car_manager.car_accelerate()
+            car_manager.accelerate()
             level_is_on = False
+        if car_manager.collision(player):
+            car_manager.stop_traffic()
+            scoreboard.game_over_message()
+            screen.onkey(player.stop, 'Up')
+            game_is_on = False
+
+screen.exitonclick()
